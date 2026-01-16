@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Proud of You, Suyash ❤️</title>
+
+<style>
+body {
+  margin: 0;
+  min-height: 100vh;
+  background: linear-gradient(135deg, #0f2027, #203a43, #2c5364);
+  font-family: 'Georgia', serif;
+  color: white;
+  overflow-x: hidden;
+}
+
+.container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 40px 20px;
+}
+
+.card {
+  background: rgba(255,255,255,0.1);
+  padding: 40px;
+  border-radius: 20px;
+  max-width: 720px;
+  width: 100%;
+  position: relative;
+  z-index: 2;
+  box-shadow: 0 25px 50px rgba(0,0,0,0.35);
+  animation: fadeIn 2s ease;
+}
+
+h1 { text-align:center; font-size:2.8rem; }
+h2 { text-align:center; color:#ffd369; margin-bottom:30px; }
+
+p { font-size:1.15rem; line-height:1.7; }
+
+.timeline {
+  margin: 40px 0;
+  border-left: 3px solid #ffd369;
+  padding-left: 20px;
+}
+
+.event {
+  margin-bottom: 30px;
+  position: relative;
+}
+
+.event::before {
+  content:'';
+  position:absolute;
+  left:-11px;
+  top:5px;
+  width:16px;
+  height:16px;
+  background:#ffd369;
+  border-radius:50%;
+}
+
+.event h3 { margin:0; color:#ffd369; }
+
+.secret {
+  text-align:center;
+  margin-top:30px;
+}
+
+input {
+  padding:10px;
+  border-radius:6px;
+  border:none;
+  width:70%;
+  max-width:260px;
+}
+
+button {
+  margin-top:15px;
+  padding:10px 22px;
+  border-radius:6px;
+  border:none;
+  background:#ffd369;
+  font-weight:bold;
+  cursor:pointer;
+}
+
+.hidden-message {
+  display:none;
+  margin-top:25px;
+  animation: fadeIn 1.5s ease;
+}
+
+.error { color:#ffb4b4; }
+
+.heart {
+  text-align:center;
+  font-size:2rem;
+  margin-top:25px;
+  animation:pulse 1.5s infinite;
+}
+
+/* Floating hearts */
+.floating-heart {
+  position: fixed;
+  bottom: -20px;
+  font-size: 18px;
+  color: rgba(255,255,255,0.25);
+  animation: floatUp linear infinite;
+  z-index: 1;
+}
+
+@keyframes floatUp {
+  from { transform: translateY(0); opacity:1; }
+  to { transform: translateY(-120vh); opacity:0; }
+}
+
+@keyframes fadeIn {
+  from { opacity:0; transform:translateY(20px); }
+  to { opacity:1; transform:translateY(0); }
+}
+
+@keyframes pulse {
+  0%{transform:scale(1);}
+  50%{transform:scale(1.2);}
+  100%{transform:scale(1);}
+}
+</style>
+</head>
+
+<body>
+
+<!-- 🎹 Soft Piano Background Music -->
+<audio autoplay loop>
+  <source src="https://cdn.pixabay.com/download/audio/2022/03/15/audio_48c8f7c2c3.mp3" type="audio/mpeg">
+</audio>
+
+<!-- Floating hearts container -->
+<div id="hearts"></div>
+
+<div class="container">
+<div class="card">
+
+<h1>Suyash ✨</h1>
+<h2>This Promotion Is Just One Chapter</h2>
+
+<p>
+You didn’t just earn a new title — you earned trust, respect,
+and proof of your own strength.
+</p>
+
+<div class="timeline">
+  <div class="event">
+    <h3>The Beginning</h3>
+    <p>Quiet effort, no applause.</p>
+  </div>
+
+  <div class="event">
+    <h3>The Grind</h3>
+    <p>Late nights, self-doubt — and still showing up.</p>
+  </div>
+
+  <div class="event">
+    <h3>The Promotion</h3>
+    <p>A moment that finally caught up with your hard work.</p>
+  </div>
+
+  <div class="event">
+    <h3>What’s Next</h3>
+    <p>Bigger dreams. Bigger impact.</p>
+  </div>
+</div>
+
+<div class="secret">
+  <p>🔐 A message meant only for you</p>
+  <input type="password" id="password" placeholder="Password">
+  <br>
+  <button onclick="checkPassword()">Unlock</button>
+  <div class="error" id="error"></div>
+</div>
+
+<div class="hidden-message" id="hiddenMessage">
+Watching you grow makes me incredibly proud.
+Not just of what you achieve — but of who you are while doing it.
+<br><br>
+No matter how far you go,
+I’ll always be right here — believing in you.
+<br><br>
+— Vidhi 🤍
+</div>
+
+<div class="heart">❤️</div>
+
+</div>
+</div>
+
+<script>
+/* Password */
+function checkPassword() {
+  const correctPassword = "proudofyou"; // 🔑 CHANGE HERE
+  const entered = document.getElementById("password").value;
+
+  if (entered === correctPassword) {
+    document.getElementById("hiddenMessage").style.display = "block";
+    document.getElementById("error").innerText = "";
+  } else {
+    document.getElementById("error").innerText = "Wrong password 🤍";
+  }
+}
+
+/* Floating hearts generator */
+setInterval(() => {
+  const heart = document.createElement("div");
+  heart.className = "floating-heart";
+  heart.innerHTML = "❤";
+  heart.style.left = Math.random() * 100 + "vw";
+  heart.style.animationDuration = (6 + Math.random() * 6) + "s";
+  document.body.appendChild(heart);
+
+  setTimeout(() => heart.remove(), 12000);
+}, 700);
+</script>
+
+</body>
+</html>
